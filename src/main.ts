@@ -1,4 +1,5 @@
 import { ErrorMapper } from "utils/ErrorMapper";
+import { Kernel } from "os/kernel";
 
 declare global {
   /*
@@ -11,15 +12,17 @@ declare global {
   */
   // Memory extension samples
   interface Memory {
-    uuid: number;
-    log: any;
+    os: {
+      processes: {[pid: number]: any},
+      [name:string]: any
+    }
   }
 
-  interface CreepMemory {
-    role: string;
-    room: string;
-    working: boolean;
-  }
+  // interface CreepMemory {
+  //   role: string;
+  //   room: string;
+  //   working: boolean;
+  // }
 
   // Syntax for adding proprties to `global` (ex "global.log")
   namespace NodeJS {
@@ -33,6 +36,8 @@ declare global {
 // This utility uses source maps to get the line numbers and file names of the original, TS source code
 export const loop = ErrorMapper.wrapLoop(() => {
   console.log(`Current game tick is ${Game.time}`);
+
+  Kernel.boot()
 
   // Automatically delete memory of missing creeps
   for (const name in Memory.creeps) {

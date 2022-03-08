@@ -12,6 +12,9 @@ export const Game: {
 
 export const Memory: {
   creeps: { [name: string]: any };
+  os?: {
+    'processes': {[pid: number]: any},
+  };
 } = {
-  creeps: {}
+  creeps: {},
 };
