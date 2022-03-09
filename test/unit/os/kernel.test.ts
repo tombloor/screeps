@@ -2,6 +2,7 @@
 
 import { assert } from "chai"
 import { Kernel } from "os/kernel";
+import { STATUS_NOT_IMPLEMENTED } from "programs";
 import { Memory } from '../mock';
 
 describe('kernel.boot (fresh)', () => {
@@ -35,5 +36,22 @@ describe('kernel.boot', () => {
         assert.isDefined(init_proc);
         assert.equal(init_proc['type'], 'init');
 
+    });
+});
+
+describe('kernel.run', () => {
+    beforeEach(() => {
+        global.Memory = _.cloneDeep(Memory);
+        global.Memory.os = {
+            'processes': {}
+        }
+    });
+
+    it('should update processes status', () => {
+        global.Memory.os.processes['0'] = { 'type': 'test' }
+
+        Kernel.run(0);
+
+        assert.equal(global.Memory.os.processes['0'].status, STATUS_NOT_IMPLEMENTED);
     });
 });

@@ -1,3 +1,9 @@
+import { Program, Init, Test } from 'programs';
+
+export const installed_programs: {[name: string]: Program} = {
+    'test': new Test(),
+    'init': new Init()
+}
 
 export class Kernel {
     private static setupMemory() {
@@ -17,7 +23,15 @@ export class Kernel {
     }
 
     public static run(pid: string) {
-        // get correct function by process type
-        // run the process, with a reference to it's Memory location
+        let mem = Memory.os.processes[pid];
+        let prog = installed_programs[mem.type];
+
+        // Check mem.status to decide if we need to run this or not (Not completed, killed)
+
+        let result = prog.run(mem);
+
+        mem.status = result;
+
+        // Do something with killed,
     }
 }

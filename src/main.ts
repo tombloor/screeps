@@ -36,7 +36,7 @@ declare global {
 // This utility uses source maps to get the line numbers and file names of the original, TS source code
 export const loop = ErrorMapper.wrapLoop(() => {
 
-  Kernel.boot()
+  Kernel.boot();
 
   // Maybe instead of kernel run, get proc type from mem, load type (from program.ts::installed programs) and call program run??
   for (const pid in Memory.os.processes) {
