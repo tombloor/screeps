@@ -38,6 +38,11 @@ export const loop = ErrorMapper.wrapLoop(() => {
 
   Kernel.boot()
 
+  // Maybe instead of kernel run, get proc type from mem, load type (from program.ts::installed programs) and call program run??
+  for (const pid in Memory.os.processes) {
+    Kernel.run(pid);
+  }
+
   // Automatically delete memory of missing creeps
   for (const name in Memory.creeps) {
     if (!(name in Game.creeps)) {

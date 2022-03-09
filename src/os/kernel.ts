@@ -15,4 +15,9 @@ export class Kernel {
             Memory.os.processes[0] = { 'type': 'init' };
         }
     }
+
+    public static run(pid: string) {
+        // get correct function by process type
+        // run the process, with a reference to it's Memory location
+    }
 }
