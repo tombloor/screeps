@@ -9,4 +9,9 @@ describe('Init', () => {
         assert.isDefined(init.run);
         assert.isDefined(init.start);
     });
+
+    it('should have correct type property', () => {
+        let init = new Init();
+        assert.equal(init.type, 'init');
+    })
 });

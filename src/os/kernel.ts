@@ -17,8 +17,8 @@ export class Kernel {
             Kernel.setupMemory();
         }
 
-        if (!(0 in Memory.os.processes)) {
-            Memory.os.processes[0] = { 'type': 'init' };
+        if (!('0' in Memory.os.processes)) {
+            Memory.os.processes['0'] = { 'type': 'init' };
         }
     }
 
@@ -28,7 +28,7 @@ export class Kernel {
 
         // Check mem.status to decide if we need to run this or not (Not completed, killed)
 
-        let result = prog.run(mem);
+        let result = prog.run(pid, mem);
 
         mem.status = result;
 

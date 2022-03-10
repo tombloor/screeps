@@ -2,14 +2,16 @@
 export const STATUS_NOT_IMPLEMENTED=-1
 
 export class Program {
+    public static type: string = '';
+
     constructor() {
     }
 
-    public start(): any {
-        return {};
+    public start(...args: any[]): any {
+        return { ...args };
     }
 
-    public run(mem: {}): number {
+    public run(pid: string, mem: {}): number {
         return STATUS_NOT_IMPLEMENTED;
     }
 }

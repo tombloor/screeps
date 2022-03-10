@@ -3,11 +3,13 @@ export const Game: {
   rooms: any;
   spawns: any;
   time: any;
+  getObjectById<T>(id: Id<T>): T | null;
 } = {
   creeps: {},
   rooms: [],
   spawns: {},
-  time: 12345
+  time: 12345,
+  getObjectById<T>(id: Id<T>) { return null; } // This will be mocked in each test where an object should be found
 };
 
 export const Memory: {
