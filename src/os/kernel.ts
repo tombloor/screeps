@@ -1,8 +1,9 @@
-import { Program, Init, Test } from 'programs';
+import { Program, Init, SpawnCreep, Test } from 'programs';
 
 export const installed_programs: {[name: string]: Program} = {
     'test': new Test(),
-    'init': new Init()
+    'init': new Init(),
+    'spawnCreep': new SpawnCreep()
 }
 
 export class Kernel {

@@ -1,5 +1,8 @@
 
 export const STATUS_NOT_IMPLEMENTED=-1
+export const STATUS_RUNNING=0
+export const STATUS_FINISHED=1
+export const STATUS_KILLED=2
 
 export class Program {
     public static type: string = '';

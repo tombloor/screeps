@@ -1,17 +1,24 @@
-import { Program, STATUS_NOT_IMPLEMENTED } from 'programs/program';
+import { Program, STATUS_NOT_IMPLEMENTED, STATUS_RUNNING, STATUS_FINISHED } from 'programs/program';
+
+interface SpawnCreepMemory {
+    spawnId: Id<StructureSpawn>;
+    body: [BodyPartConstant];
+    creepName: string;
+
+    out_creepId: Id<Creep>;
+    out_err: ScreepsReturnCode;
+}
 
 export class SpawnCreep extends Program {
     type = 'spawnCreep';
 
-    start(spawnId: Id<StructureSpawn>, body: string[], creepName: string): any {
+    public start(spawnId: Id<StructureSpawn>, body: string[], creepName: string): any {
         // Check the spawn exists, if not, exit with error
         if (Game.getObjectById<Id<StructureSpawn>>(spawnId) == null) {
             throw ReferenceError('Spawn id not found');
         }
 
-        // Check the body definition is valid, if not, exit with error
-
-        // Check the creepName is not in use (append number so we don't block)
+        // Check the creepName is not in use (append number so we don't block)??
 
         return {
             spawnId: spawnId,
@@ -19,4 +26,29 @@ export class SpawnCreep extends Program {
             creepName: creepName
         }
     }
+
+    public run(pid: string, mem: SpawnCreepMemory): number {
+        debugger;
+        if (Game.creeps[mem.creepName]) {
+            mem.out_creepId = Game.creeps[mem.creepName].id;
+            return STATUS_FINISHED;
+        }
+
+        let spawn = Game.getObjectById(mem.spawnId);
+        if (!spawn) {
+            mem.out_err = ERR_NOT_FOUND;
+            return STATUS_FINISHED
+        }
+
+        let result = spawn.spawnCreep(mem.body, mem.creepName);
+        if (result == OK) {
+            return STATUS_FINISHED;
+        } else {
+            mem.out_err = result;
+        }
+
+        return STATUS_RUNNING;
+    }
+
+    // Get result function (kill=true) ??
 }

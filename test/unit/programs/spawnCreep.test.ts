@@ -32,18 +32,25 @@ describe('SpawnCreep.start', () => {
 
             return null;
         });
+
+        //@ts-ignore
+        global.WORK = 'work';
+        //@ts-ignore
+        global.MOVE = 'move';
+        //@ts-ignore
+        global.CARRY = 'carry';
     });
 
     it('should return starting memory state', () => {
-        let mem = new SpawnCreep().start(<Id<StructureSpawn>>'spawn1', ['work', 'move', 'carry'], 'creepy');
-        assert.equal(mem.spawnId, 'spawn1');
-        //assert.equal(mem.body, [WORK, MOVE, CARRY]);
-        //assert.equal(mem.creepName, 'creepy');
+        let mem = new SpawnCreep().start(<Id<StructureSpawn>>'spawn1', [WORK, MOVE, CARRY], 'creepy');
+        assert.equal(mem.spawnId, 'spawn1');MOVE
+        assert.deepEqual(mem.body, [WORK, MOVE, CARRY]);
+        assert.equal(mem.creepName, 'creepy');
     });
 
     it('should throw a reference error if spawn does not exist', () => {
         assert.throws(() => {
-            new SpawnCreep().start(<Id<StructureSpawn>>'spawnNull', ['work', 'move', 'carry'], 'creepy');
+            new SpawnCreep().start(<Id<StructureSpawn>>'spawnNull', [WORK, MOVE, CARRY], 'creepy');
         });
     });
 

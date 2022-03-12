@@ -1,6 +1,8 @@
 import { ErrorMapper } from "utils/ErrorMapper";
 import { Kernel } from "os/kernel";
 
+import { SpawnCreep } from 'programs';
+
 declare global {
   /*
     Example types, expand on these or remove them and add your own.
@@ -38,7 +40,19 @@ export const loop = ErrorMapper.wrapLoop(() => {
 
   Kernel.boot();
 
-  // Maybe instead of kernel run, get proc type from mem, load type (from program.ts::installed programs) and call program run??
+  // THIS IS FOR TESTING ONLY
+  try {
+    debugger;
+    if (!('1' in Memory.os.processes)) {
+      Memory.os.processes['1'] = new SpawnCreep().start(Game.spawns['Spawn1'].id, ['work', 'move', 'carry'], 'testCreep');
+      Memory.os.processes['1'].type = 'spawnCreep';
+    }
+  }
+  catch(err) {
+    console.log(err);
+  }
+  //
+
   for (const pid in Memory.os.processes) {
     Kernel.run(pid);
   }
