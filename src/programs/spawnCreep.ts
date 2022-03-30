@@ -18,7 +18,9 @@ export class SpawnCreep extends Program {
             throw ReferenceError('Spawn id not found');
         }
 
-        // Check the creepName is not in use (append number so we don't block)??
+        if (creepName in Game.creeps) {
+            throw Error('This creep name is already in use');
+        }
 
         return {
             spawnId: spawnId,
@@ -28,7 +30,6 @@ export class SpawnCreep extends Program {
     }
 
     public run(pid: string, mem: SpawnCreepMemory): number {
-        debugger;
         if (Game.creeps[mem.creepName]) {
             mem.out_creepId = Game.creeps[mem.creepName].id;
             return STATUS_FINISHED;
