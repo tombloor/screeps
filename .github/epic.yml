@@ -1,0 +1,21 @@
+name: "Epic"
+description: "Track a large epic composed of multiple stories."
+title: "Epic: "
+labels: ["epic"]
+assignees: []
+projects: ["Screeps"]
+body:
+  - type: textarea
+    attributes:
+      label: Epic Description
+      description: What is this epic about? High-level goal.
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Any sketches, diagrams, references, etc.
+    validations:
+      required: false

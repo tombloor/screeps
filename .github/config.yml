@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links: []
+issue_templates:
+  - name: Epic
+    description: Track a large epic composed of multiple stories
+    labels: [epic]
+    template: epic.yml
+  - name: User Story
+    description: A actor-focused story representing a unit of functionality
+    labels: [story]
+    template: story.yml
