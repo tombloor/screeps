@@ -1,0 +1,7 @@
+{
+  "name": "smokey-bot",
+    "devDependencies": {
+    "typescript": "^5.1.6",
+    "@types/screeps": "^3.3.8"
+  }
+}
