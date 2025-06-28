@@ -8,44 +8,15 @@ body:
   - type: textarea
     id: description
     attributes:
-      label: Description
-      description: A clear and concise description of the feature you would like to see.
+      label: Feature Description
+      description: What feature do you want and why?
     validations:
       required: true
-
-  - type: textarea
-    id: motivation
-    attributes:
-      label: Motivation and Use Case
-      description: Explain why this feature would be useful and what problem it solves.
-      placeholder: "As a [user type], I want [functionality] so that [benefit]."
-    validations:
-      required: true
-
-  - type: textarea
-    id: acceptance
-    attributes:
-      label: Acceptance Criteria
-      description: List the specific conditions that must be met for this feature to be considered complete.
-      placeholder: |
-        - [ ] Condition 1
-        - [ ] Condition 2
-        - [ ] Condition 3
-    validations:
-      required: true
-
-  - type: textarea
-    id: alternatives
-    attributes:
-      label: Alternative Solutions
-      description: Describe any alternative solutions or features you've considered.
-    validations:
-      required: false
 
   - type: textarea
     id: notes
     attributes:
-      label: Additional Notes
-      description: Any additional context, mockups, diagrams, or references that would help with implementation.
+      label: Notes
+      description: Any acceptance criteria, mockups, references, etc.
     validations:
       required: false
