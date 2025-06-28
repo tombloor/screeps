@@ -1,0 +1,22 @@
+name: "Bug Report"
+description: "Report a bug that needs to be fixed"
+title: "Bug: "
+labels: ["bug"]
+assignees: []
+projects: ["Screeps"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: What's the bug and how to reproduce it?
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Any additional context, screenshots, or environment details.
+    validations:
+      required: false
