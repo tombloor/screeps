@@ -1,0 +1,1 @@
+export const get_message = () => "Hello, world!";
