@@ -1,8 +1,8 @@
 # Copilot instructions for this repository
 
 ## Repository purpose
-- This repository is a TypeScript starter for a Screeps bot.
-- Prefer practical, incremental improvements that keep the starter approachable.
+- This repository is a beginner TypeScript Screeps bot.
+- Prefer practical, incremental improvements that keep the bot approachable.
 - Keep `src/main.ts` focused on the game loop entrypoint and core tick flow.
 
 ## TypeScript and code organization
