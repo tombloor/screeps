@@ -2,6 +2,7 @@
 
 ## Repository purpose
 - This repository is a beginner TypeScript Screeps bot.
+- This repository is based on the a starter framework. Framework docs can be found in the `docs` directory.
 - Prefer practical, incremental improvements that keep the bot approachable.
 - Keep `src/main.ts` focused on the game loop entrypoint and core tick flow.
 
