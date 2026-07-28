@@ -1,3 +1,5 @@
+import * as harvesterRole from "roles/harvester";
+import * as spawnManager from "managers/spawnManager";
 import { ErrorMapper } from "utils/ErrorMapper";
 
 declare global {
@@ -22,10 +24,6 @@ declare global {
   }
 
 }
-// Syntax for adding properties to `global` (ex "global.log")
-declare const global: {
-  log: any;
-}
 
 // When compiling TS to JS and bundling with rollup, the line numbers and file names in error messages change
 // This utility uses source maps to get the line numbers and file names of the original, TS source code
@@ -37,5 +35,19 @@ export const loop = ErrorMapper.wrapLoop(() => {
     if (!(name in Game.creeps)) {
       delete Memory.creeps[name];
     }
+  }
+
+  // Run role logic for each creep
+  for (const name in Game.creeps) {
+    const creep = Game.creeps[name];
+    if (creep.memory.role === "harvester") {
+      harvesterRole.run(creep);
+    }
+  }
+
+  // Run spawn management for each spawn
+  for (const spawnName in Game.spawns) {
+    const spawn = Game.spawns[spawnName];
+    spawnManager.run(spawn);
   }
 });

@@ -2,5 +2,9 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "CommonJs"
+  },
+  "include": ["src/**/*", "test/**/*"],
+  "ts-node": {
+    "files": true
   }
 }
